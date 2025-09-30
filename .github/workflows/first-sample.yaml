@@ -1,0 +1,17 @@
+name: first-sample-workflow
+on: [push]
+jobs:
+  check-in:
+    runs-on: ubuntu-latest
+    steps:
+        - name: echo custom check-in message
+          run: echo "Hi workflow triggered"
+
+  check-out:
+    runs-on: ubuntu-latest
+    needs: check-in
+    steps:
+        - name: echo custom check-out message
+          run: echo "Bye workflow finished"
+
+
