@@ -1,0 +1,33 @@
+name: Filter Workflow 
+on:
+    push:
+        branches:
+            - main
+            - "feature/*" #match all branches starting with feature/
+            - "feature/**" #match all branches starting with feature/ and any subdirectories like feature/xyz/abc
+            - "!feature/featA" #ignore specific branch
+        tags:
+            - "v1.*" #match all tags starting with v1.
+            - "v2.0.0" #match specific tag
+            - "!v2.0.1" #ignore specific tag
+        paths:
+            - "*.js" #match all js files
+jobs:
+    filter-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+            - name: Display GitHub context information
+              run: |
+                echo "The branch or tag that triggered the workflow is: $GITHUB_REF"
+                echo "The commit SHA that triggered the workflow is: $GITHUB_SHA"
+                echo "The event that triggered the workflow is: $GITHUB_EVENT_NAME"
+                echo "The repository that triggered the workflow is: $GITHUB_REPOSITORY"
+                echo "The actor who triggered the workflow is: $GITHUB_ACTOR"
+                echo "The workflow run ID is: $GITHUB_RUN_ID"
+                echo "The workflow run number is: $GITHUB_RUN_NUMBER"
+                echo "The job ID is: $GITHUB_JOB"
+                echo "The job status is: $GITHUB_JOB_STATUS"
+                echo "The event payload file path is: $GITHUB_EVENT_PATH"
+                echo "The workspace directory is: $GITHUB_WORKSPACE"
