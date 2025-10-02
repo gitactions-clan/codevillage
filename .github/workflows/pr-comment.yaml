@@ -6,7 +6,7 @@ jobs:
     pr-comment:
         runs-on: ubuntu-latest
         steps:
-           - name: PR comment 
+           - name: PR comment workflow
              uses: actions/github-script@v6  #javaScript action to interact with GitHub API
              with:    
                 script: |
