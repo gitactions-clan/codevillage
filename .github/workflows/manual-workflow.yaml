@@ -6,15 +6,6 @@ on:
             description: 'A string input'
             required: true
             default: 'Hi Vijay! Welcome to Github Actions manual workflow.'
-        number:
-            description: 'A number input'
-            required: true
-            type: number
-            default: 21
-        boolean:
-            description: 'A boolean input'
-            required: true
-            type: boolean
         environment:
             description: 'Select the environment to run the workflow'
             required: true
