@@ -1,0 +1,13 @@
+name: Close Stale Issues and PR 
+on:
+    schedule:
+        - cron: "0/5 * * * *" #runs every 5 minutes
+jobs:
+    stale:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/stale@v10
+              with:
+                stale-issue-message: 'You are seeing this Message, since there are some stale issues/PRs in this repository. Please take necessary action to avoid closing the issue/PR.'
+                days-before-stale: 1
+                days-before-close: 5
