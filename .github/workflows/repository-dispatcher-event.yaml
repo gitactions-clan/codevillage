@@ -1,7 +1,7 @@
 name: Repository Dispatcher Event Workflow
 on:
     repository_dispatch:
-        types: [build]
+        types: [build , test]
 jobs:
     echo-a-string:
         runs-on: ubuntu-latest
