@@ -1,0 +1,25 @@
+name: Expressions and Context workflow
+on: [push, pull_request, issues, workflow_dispatch]
+run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
+jobs:
+    if-job:
+        runs-on: ubuntu-latest
+        if: contains(fromJson('["pull_request", "issues"]'), github.event_name)
+        steps:
+            - name: Run only if there is a Bug label
+              if: contains(github.event.issue.labels.*.name, 'bug')
+              run: echo ${{join(github.event.issue.labels.*.name, ', ')}}
+    expressions-job:
+        runs-on: ubuntu-latest
+        if: contains(github.event_name, 'push')
+        steps:
+            - name: Expressions
+              id: expressions
+              run: |
+                 echo ${{ 1 }}
+                 echo ${{ 'This is a string' }}
+                 echo ${{ true }}
+                 echo ${{ 1 > 2 }}
+                 echo ${{ 'string' == 'String' }}
+                 echo ${{ 'true' && 'false'}}
+                 echo ${{ true || (false && true)}}
