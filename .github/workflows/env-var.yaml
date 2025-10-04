@@ -21,5 +21,4 @@ jobs:
             - name: Log All Env Vars
               run: |
                     echo "Workflow Level Env Var: $WF_LEV_ENV_VAR"
-                    echo "Overridden Workflow Level Env Var: $WF_LEV_ENV_VAR"
                     echo "Job Level Env Var: $JOB_LEV_ENV_VAR"
