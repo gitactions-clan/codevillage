@@ -1,0 +1,25 @@
+name: Environment Variables Workflow
+on: [push]
+
+env:
+ WF_LEV_ENV_VAR: "I am a workflow level environment variable"
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log Env Var
+              run: echo $GITHUB_REF
+            - name: Log Context Var
+              run: echo ${{ github.ref }}
+    job2:
+        runs-on: ubuntu-latest
+        env:
+            JOB_LEV_ENV_VAR: "I am a job level environment variable"
+            WF_LEV_ENV_VAR: "I am overridden workflow level environment variable"
+        steps:
+            - name: Log All Env Vars
+              run: |
+                    echo "Workflow Level Env Var: $WF_LEV_ENV_VAR"
+                    echo "Overridden Workflow Level Env Var: $WF_LEV_ENV_VAR"
+                    echo "Job Level Env Var: $JOB_LEV_ENV_VAR"
