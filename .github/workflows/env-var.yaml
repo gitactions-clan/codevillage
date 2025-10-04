@@ -48,9 +48,5 @@ jobs:
                     echo "When I said I wanted to be a comedian, my dad laughed. >> $GITHUB_ENV
                     echo "He was right, of course. >> $GITHUB_ENV
                     echo $DELIMITER >> $GITHUB_ENV
-    job4:
-        runs-on: ubuntu-latest
-        needs: job3
-        steps:
             - name: Show Multi line Env Var
               run: echo $RANDOM_JOKE
