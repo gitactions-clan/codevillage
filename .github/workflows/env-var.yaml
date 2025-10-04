@@ -19,6 +19,9 @@ jobs:
             WF_LEV_ENV_VAR: "I am overridden workflow level environment variable"
         steps:
             - name: Log All Env Vars
+              env:
+                  STEP_LEV_ENV_VAR: "I am a step level environment variable"
               run: |
                     echo "Workflow Level Env Var: $WF_LEV_ENV_VAR"
                     echo "Job Level Env Var: $JOB_LEV_ENV_VAR"
+                    echo "Step Level Env Var: $STEP_LEV_ENV_VAR"
