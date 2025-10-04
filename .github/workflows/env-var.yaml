@@ -40,7 +40,7 @@ jobs:
         steps:
             - name: Log Multi line Env Var
               run: |
-                    DELIMITER=1111
+                    DELIMITER=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
                     echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
                     echo "When I said I wanted to be a comedian, my dad laughed " >> "$GITHUB_ENV"
                     curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
