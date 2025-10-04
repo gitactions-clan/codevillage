@@ -53,4 +53,4 @@ jobs:
         needs: job3
         steps:
             - name: Show Multi line Env Var
-              run: echo "$RANDOM_JOKE"
+              run: echo $RANDOM_JOKE
