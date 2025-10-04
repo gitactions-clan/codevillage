@@ -18,10 +18,23 @@ jobs:
             JOB_LEV_ENV_VAR: "I am a job level environment variable"
             WF_LEV_ENV_VAR: "I am overridden workflow level environment variable"
         steps:
-            - name: Log All Env Vars
+            - name: Log Env Vars
               env:
                   STEP_LEV_ENV_VAR: "I am a step level environment variable"
               run: |
                     echo "Workflow Level Env Var: $WF_LEV_ENV_VAR"
                     echo "Job Level Env Var: $JOB_LEV_ENV_VAR"
                     echo "Step Level Env Var: $STEP_LEV_ENV_VAR"
+            - name: Set New Env Var
+              id: imp
+              run: |
+                    echo "NEW_ENV_VAR=$(date)" >> $GITHUB_ENV
+                    echo "JOB_LEV_ENV_VAR=I am overridden job level environment variable- $Random" >> $GITHUB_ENV
+            - name: Log All Env Vars
+              if: ${{ steps.imp.outputs.some_output == 'expected_value' }}
+              run: |
+                    echo "Workflow Level Env Var: $WF_LEV_ENV_VAR"
+                    echo "Job Level Env Var: $JOB_LEV_ENV_VAR"
+                    echo "Step Level Env Var: $STEP_LEV_ENV_VAR"
+                    echo "New Env Var: $NEW_ENV_VAR"
+
