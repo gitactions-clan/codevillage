@@ -46,6 +46,6 @@ jobs:
                     curl -s https://icanhazdadjoke.com/ >> $GITHUB_ENV
                     echo " -- " >> $GITHUB_ENV
                     echo "When I said I wanted to be a comedian, my dad laughed. >> $GITHUB_ENV
-                    echo $DELIMITER >> $GITHUB_ENV
+                    echo "$DELIMITER" >> $GITHUB_ENV
             - name: Show Multi line Env Var
               run: echo $RANDOM_JOKE
